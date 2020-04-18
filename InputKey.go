@@ -56,3 +56,13 @@ func InputKey(s string, args ...string) {
 	sendInputa(1, unsafe.Pointer(&input[1]), int32(unsafe.Sizeof(input[1])))
 	sendInputa(1, unsafe.Pointer(&input[3]), int32(unsafe.Sizeof(input[3])))
 }
+
+func SetKeyCode(press bool, keyCode uint16) {
+	var input keyBdInput;
+	input.Ki.WVk = keyCode;
+	input.Type = inputKeyBoard
+	if !press {
+		input.Ki.DwFlags = keyEventKeyUp
+	}
+	sendInputa(1, unsafe.Pointer(&input), int32(unsafe.Sizeof(input)))
+}

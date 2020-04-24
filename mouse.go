@@ -64,7 +64,6 @@ func SetMouseKey(button int, press bool) {
 	}
 	index = button * 2 + index;
 	input.Mi.DwFlags = flags[index]
-	log.Debugf("SetMouseKey: button(%d), dwFlags (%08x)", index, flags[index]);
 	sendInputa(1, unsafe.Pointer(&input), int32(unsafe.Sizeof(input)))
 }
 
